@@ -14,9 +14,13 @@ jobs:
         id: wpscan
         with:
           url: 'https://WORDPRESS_SITE/'
+     # Scan Traget URL     
           token: ${{ secrets.WPSCAN_TOKEN }}
+     # API token for wpscan.com. Required for vulnerability data
           webhook: ${{ secrets.SLACK_WEBHOOK }}
       - name: Scan Results
         run: |
-          echo ${{ steps.wpscan.outputs.resultb64 }}
+          echo ${{ steps.wpscan.outputs.resultb64 }}  
+     # result: JSON scan results     
           echo ${{ steps.wpscan.outputs.result }}
+     # result: JSON scan results base64 encoded     
